@@ -1,0 +1,9 @@
+{
+  "appId": "com.yourcompany.physioapp",
+  "appName": "Physio App",
+  "webDir": "dist",
+  "backgroundColor": "#F4F6FB",
+  "server": {
+    "androidScheme": "https"
+  }
+}
