@@ -66,8 +66,8 @@ npm run cap:ios       # build + sync + เปิด Xcode
 
 1. **ไอคอนแอป/Splash screen** — แทนที่ไอคอน default ด้วยแพ็กเกจ `@capacitor/assets` (`npx @capacitor/assets generate`) โดยเตรียมไฟล์ `resources/icon.png` (1024x1024) และ `resources/splash.png` ไว้ก่อน
 2. **แถบสถานะปลอมด้านบน** (เวลา 9:41, สัญญาณ, แบตเตอรี่) ใน `StatusBar` component เป็นของตกแต่งไว้พรีวิวบนเว็บเท่านั้น — บนมือถือจริงจะมีแถบสถานะของระบบ (เวลา/แบต) อยู่แล้ว แนะนำลบ `<StatusBar />` ออกจาก `App.jsx` หรือซ่อนด้วยเงื่อนไข `Capacitor.isNativePlatform()`
-3. **กล้อง AI วัดมุมข้อต่อ** — ตอนนี้เป็นภาพนิ่ง/SVG จำลอง ยังไม่ได้เชื่อมกล้องจริง ต้องติดตั้งปลั๊กอินกล้อง เช่น `@capacitor/camera` หรือ pose-detection ผ่าน TensorFlow.js/MediaPipe ถ้าต้องการให้วัดมุมจากวิดีโอสดจริง (แจ้งได้ ทำต่อให้ได้)
-4. **ขอ permission กล้อง** — ต้องเพิ่มสิทธิ์ในไฟล์ `android/app/src/main/AndroidManifest.xml` (`<uses-permission android:name="android.permission.CAMERA" />`) และ `ios/App/App/Info.plist` (`NSCameraUsageDescription`) ก่อนใช้กล้องได้จริง
+3. **กล้องและการตรวจท่า** — แอปใช้ `getUserMedia` แสดงภาพกล้องสดและสลับกล้องได้ โดยไฟฉายขึ้นอยู่กับการรองรับของอุปกรณ์ ผู้ใช้บันทึกจำนวนครั้งเอง; ยังไม่มี AI วิเคราะห์ท่าหรือวัดมุมจริง
+4. **ขอ permission กล้อง** — เว็บต้องเปิดผ่าน HTTPS หรือ `localhost` และอนุญาตการใช้กล้อง ส่วนแอป native ต้องเพิ่มสิทธิ์ใน `android/app/src/main/AndroidManifest.xml` (`<uses-permission android:name="android.permission.CAMERA" />`) และ `ios/App/App/Info.plist` (`NSCameraUsageDescription`) ก่อนใช้กล้อง
 
 ## โครงสร้างไฟล์
 
